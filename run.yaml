@@ -1,19 +1,11 @@
-# Fill this in before you submit -- our evaluator runs these commands
-# EXACTLY as written, in this order, from a fresh checkout of your fork.
-# Keep every command non-interactive (no prompts) and idempotent.
-
-setup_commands:
-  - "pip install -r requirements.txt"
-  # - add every other setup step here, in order (env vars, downloads, etc.)
-
-run_commands:
-  - "python src/main.py --help"
-  # - the real command(s) that actually run your solution
-
-test_commands: []
-  # optional -- commands that run your own tests/checks, if you have any
-
-notes: ""
-  # anything we should know before running this (e.g. "needs a GPU",
-  # "takes about 10 minutes", "expects a sample dataset already present
-  # under data/, see docs/ for where to get it")
+version: 1
+name: blended-rag-pipeline
+description: >-
+  DevDocs Intelligence: hybrid technical-documentation retrieval using BM25,
+  FAISS dense search, and Reciprocal Rank Fusion, with optional local Ollama
+  answer generation.
+commands:
+  install: "python -m pip install -r requirements.txt"
+  test: "python -m pytest -q tests"
+  ingest_check: "python -m scripts.ingest_docs --directory data/raw"
+  launch: "python -m streamlit run src/app.py"
